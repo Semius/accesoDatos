@@ -27,6 +27,7 @@ import java.awt.Desktop.Action;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import java.awt.event.WindowAdapter;
@@ -78,6 +79,7 @@ public class Editor {
 
 		frame.getContentPane().add(textPane, BorderLayout.NORTH);
 		
+		//al pulsar cerrar
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -101,8 +103,7 @@ public class Editor {
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Nuevo");		
 		mntmNewMenuItem.addActionListener(new ActionListener() {
-			
-			
+					
 			public void actionPerformed(ActionEvent arg0) {
 				nuevo(textPane,mntmNewMenuItem);
 			}
@@ -115,7 +116,8 @@ public class Editor {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Abrir");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				abrir(textPane);
+				/*abrir(textPane);*/
+				abrir2(textPane);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
@@ -141,9 +143,6 @@ public class Editor {
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_3);
-		
-		
-		
 		
 		
 		
@@ -292,14 +291,13 @@ public class Editor {
 			String direccion3= ".txt";
 			String direccion4=direccion1+"/"+direccion2+direccion3;
 			
-			System.out.println(direccion4);
+			/*System.out.println(direccion4);*/
 			File direccionFile= new File(direccion4);
 			
 			direccionFile.createNewFile();
 			
 			FileWriter f= new FileWriter(direccion4);
 			BufferedWriter bw = new BufferedWriter(f);
-			/*System.out.println(texto);*/
 			bw.write(texto);
 			bw.close();
 
@@ -318,10 +316,11 @@ public class Editor {
 	
 	public void nuevo(JTextPane textPane,JMenuItem mntmNewMenuItem) {
 	
+		//mira si hay algo escrito
 		String texto= textPane.getText();
 		int digitos=texto.length();
 		
-		if (digitos!=0) {
+		if (digitos!=0) {	//si hay algo escrito
 			int eleccion = JOptionPane.showConfirmDialog(
 					mntmNewMenuItem, "Si creas un archivo nuevo se borrara lo que no hayas guardado", "Crear un texto nuevo",
 	                JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
@@ -361,7 +360,47 @@ public class Editor {
 		
 	}
 	
+	//metodo para abrir seleccionando la ruta
+	
+	public void abrir2(JTextPane textPane){
+		String aux="";   
+		 String texto="";
+		 JFileChooser fc = new JFileChooser();
+		 int seleccion = fc.showOpenDialog(textPane);
+		 if(seleccion==JFileChooser.APPROVE_OPTION){
+			 File fichero=fc.getSelectedFile();
+
+			  System.out.println(fichero.getAbsolutePath());
+			  try(FileReader fr=new FileReader(fichero)){
+			        String cadena="";
+			        int valor=fr.read();
+			        int contador=0;
+			        while(valor!=-1){
+			            cadena=cadena+(char)valor;
+			            valor=fr.read();
+			            //cuenta cada dígito para evitar que se lean archivos que rompan el programa
+			            contador++;
+			            if(contador>10000) {
+			            	System.out.println("Demasiado texto para el programa");
+			            	break;
+			            }
+			        }
+			        textPane.setText(cadena);
+			    } catch (IOException e1) {
+			        e1.printStackTrace();
+			    }
+			  
+		  }
+		  
+		
+		
+	}
+	
+	
+	
+	//método para cerrar
 	public void cerrar(JTextPane textPane) {
+		//mira si hay texto o no
 		String texto= textPane.getText();
 		int digitos=texto.length();
 		if (digitos==0) {
@@ -374,9 +413,6 @@ public class Editor {
 
 					
 				}
-			else {
-				//escribir algo para que no se cierre
-			}
 			}
 		}
 	 
