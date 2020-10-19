@@ -79,13 +79,15 @@ public class Editor {
 
 		frame.getContentPane().add(textPane, BorderLayout.NORTH);
 		
-		//al pulsar cerrar
+		
+		//AL PULSAR CERRAR
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				cerrar(textPane);
 			}
 		});
+		
 		
 		//MENÚS
 		
@@ -252,14 +254,13 @@ public class Editor {
 			String direccion2="/Texto.txt";
 			String direccion3=direccion1+direccion2;
 			
-			/*System.out.println(direccion3);*/
 			File direccionFile= new File(direccion3);
 			
 			direccionFile.createNewFile();
 			
 			FileWriter f= new FileWriter(direccion3);
 			BufferedWriter bw = new BufferedWriter(f);
-			/*System.out.println(texto);*/
+			
 			bw.write(texto);
 			bw.close();
 
@@ -291,7 +292,7 @@ public class Editor {
 			String direccion3= ".txt";
 			String direccion4=direccion1+"/"+direccion2+direccion3;
 			
-			/*System.out.println(direccion4);*/
+			
 			File direccionFile= new File(direccion4);
 			
 			direccionFile.createNewFile();
@@ -406,7 +407,7 @@ public class Editor {
 		if (digitos==0) {
 			System.exit(0);
 		}
-		if (digitos!=0) {
+		if (digitos!=0) { //si hay algo escrito no deja cerrar al momento
 			int eleccion = JOptionPane.showConfirmDialog( null, "Hay texto escrito ¿Seguro que quieres cerrar?", "Cerrar", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 			if (eleccion==0) {
 				System.exit(0);
