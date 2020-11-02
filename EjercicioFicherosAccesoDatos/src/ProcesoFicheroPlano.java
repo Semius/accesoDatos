@@ -14,19 +14,6 @@ public class ProcesoFicheroPlano extends ProcesamientoFichero  {
 
 	
 	
-	
-	//leer texto plano
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//leerFichero
 	
 	@Override
@@ -111,16 +98,7 @@ public class ProcesoFicheroPlano extends ProcesamientoFichero  {
 	}
 
 
-	private char[] arrayP1(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-
-	private String arrayPersonajes(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 	@Override

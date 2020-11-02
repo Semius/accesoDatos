@@ -147,14 +147,10 @@ public class ProcesamientoFicherosXMLDOM extends ProcesamientoFichero {
 
 	@Override
 	public void guardarFichero(ArrayList<Libro> arrayLibros) {
-		System.out.println("a");
-		// TODO Auto-generated method stub
+
 		String ruta="C:\\Users\\PC33\\Desktop\\borrar//ProcesamientoXML.xml";
-		
-		
-		
-		String textoLibro="";
-		
+
+	
 		String titulo="";
 		String editorial="";
 		String autor="";
@@ -162,79 +158,146 @@ public class ProcesamientoFicherosXMLDOM extends ProcesamientoFichero {
 		String genero="";
 		
 	    ArrayList<Personajes> arrayProtagonistas = new ArrayList<Personajes>();
-		String personaje="";
-		String generoPersonaje="";
-		String importancia="";
-		for (Libro s : arrayLibros) {
-			
-			titulo=s.getTitulo();
-			System.out.println(titulo);
-	        editorial=s.getEditorial();
-	        autor= s.getAutor();
-	        fecha=s.getFecha();
-	        genero=s.getGenero();
-	        arrayProtagonistas=s.getPersonajes();
-	        /*System.out.println(arrayProtagonistas);*/
-	        try {
-	        	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-				  DocumentBuilder db = dbf.newDocumentBuilder();
-				  Document doc = db.newDocument();
-
-				  // definimos el elemento raíz del documento
-				  Element eRaiz = doc.createElement(titulo);
-				  doc.appendChild(eRaiz);
-
-				  // definimos el nodo que contendrá los elementos
-				  Element eCoche = doc.createElement("coche");
-				  Element eCoche2 = doc.createElement("coche2");
-				  eRaiz.appendChild(eCoche);
-				  eRaiz.appendChild(eCoche2);
-
-				  // atributo para el nodo coche
-				  Attr attr = doc.createAttribute("id");
-				  attr.setValue("1");
-				  eCoche.setAttributeNode(attr);
-				  
-				  Attr attr2 = doc.createAttribute("id2");
-				  attr2.setValue("2");
-				  eCoche2.setAttributeNode(attr2);
-
-				  // definimos cada uno de los elementos y le asignamos un valor
-				  Element eMarca = doc.createElement("marca");
-				  eMarca.appendChild(doc.createTextNode("Renault"));
-				  eCoche.appendChild(eMarca);
-
-				  Element eModelo = doc.createElement("modelo");
-				  eModelo.appendChild(doc.createTextNode("Megano"));
-				  eCoche.appendChild(eModelo);
-
-				  Element eCilindrada = doc.createElement("cilindrada");
-				  eCilindrada.appendChild(doc.createTextNode("1.5"));
-				  eCoche.appendChild(eCilindrada);
-
-				  // clases necesarias finalizar la creación del archivo XML
-				  TransformerFactory transformerFactory = TransformerFactory.newInstance();
-				  Transformer transformer = transformerFactory.newTransformer();
-				  DOMSource source = new DOMSource(doc);
-				  StreamResult result = new StreamResult(new File(ruta));
-
-				  transformer.transform(source, result);
-
-	        }
-	        catch(Exception e) {
-	        	e.printStackTrace();
-	        }
-	      }
-		/*System.out.println(titulo);*/
+		
 		try {
-			  
-			} catch(Exception e) {
-			  e.printStackTrace();
+			
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		    DocumentBuilder builder = factory.newDocumentBuilder();
+		    DOMImplementation implementation = builder.getDOMImplementation();
+		    Document document = implementation.createDocument(null, "ListaLibros", null); //se crea la lista principal
+		    document.setXmlVersion("1.0");
+				
+		
+		    Element raiz = document.getDocumentElement();
+		    
+			for (Libro s : arrayLibros) {
+				titulo=s.getTitulo();
+				System.out.println(titulo);
+		        editorial=s.getEditorial();
+		        autor= s.getAutor();
+		        fecha=s.getFecha();
+		        genero=s.getGenero();
+		        arrayProtagonistas=s.getPersonajes();
+		        System.out.println(arrayProtagonistas);
+		 
+		        
+		        
+				
+				
+				
+					
+					
+		        //Item Node LIBRO
+		        Element itemNode = document.createElement("Libro");
+	            //Key Node
+	            Element keyNode = document.createElement("Titulo"); 
+	            Text nodeKeyValue = document.createTextNode(titulo);
+	            keyNode.appendChild(nodeKeyValue);
+	
+	            
+	            
+	            //Editorial
+	            Element keyNode2 = document.createElement("Editorial"); 
+	            Text nodeKeyValue2 = document.createTextNode(editorial);
+	            keyNode2.appendChild(nodeKeyValue2);
+	            
+	            //Autor
+	            
+	            Element keyNode3 = document.createElement("Autor"); 
+	            Text nodeKeyValue3 = document.createTextNode(autor);
+	            keyNode3.appendChild(nodeKeyValue3);
+	            
+	            //Autor
+	            
+	            Element keyNode4 = document.createElement("Fecha"); 
+	            Text nodeKeyValue4 = document.createTextNode(fecha);
+	            keyNode4.appendChild(nodeKeyValue4);
+	            
+	            //Autor
+	            
+	            Element keyNode5 = document.createElement("Genero"); 
+	            Text nodeKeyValue5 = document.createTextNode(genero);
+	            keyNode5.appendChild(nodeKeyValue5);
+	            
+	
+	            
+	            
+	            
+	            //append keyNode and valueNode to itemNode
+	            itemNode.appendChild(keyNode);
+	            itemNode.appendChild(keyNode2);
+	            itemNode.appendChild(keyNode3);
+	            itemNode.appendChild(keyNode4);
+	            itemNode.appendChild(keyNode5);
+	            
+	            for (Personajes p: arrayProtagonistas) {
+	            	System.out.println("personaje");
+	            	
+	            	
+	            	String nombreP=p.getNombre();
+	            	System.out.println(p.getNombre());
+	            	String generoP=p.getGeneroPersonaje();
+	            	String importanciaP=p.getImportancia();
+	            	
+	            	Element personajesKey = document.createElement("Personajes");
+	            	
+	            	//nombre
+	            	Element keyNode6 = document.createElement("Nombre"); 
+		            Text nodeKeyValue6 = document.createTextNode(nombreP);
+		            keyNode6.appendChild(nodeKeyValue6);
+		            
+		            
+		            //genero
+		            Element keyNode7 = document.createElement("Genero"); 
+		            Text nodeKeyValue7 = document.createTextNode(generoP);
+		            keyNode7.appendChild(nodeKeyValue7);
+		            
+		            //importancia
+		            Element keyNode8 = document.createElement("Importancia"); 
+		            Text nodeKeyValue8 = document.createTextNode(importanciaP);
+		            keyNode8.appendChild(nodeKeyValue8);
+		            
+		            
+		            
+		            personajesKey.appendChild(keyNode6);
+		            personajesKey.appendChild(keyNode7);
+		            personajesKey.appendChild(keyNode8);
+		            
+		            
+		            
+		            
+		            
+		            
+		            itemNode.appendChild(personajesKey);
+	            }
+	            
+	            //append itemNode to raiz
+	            raiz.appendChild(itemNode); //pegamos el elemento a la raiz "Documento"
+	           
+	            
+			}//for
+			
+			//Generar XML
+            Source source = new DOMSource(document);
+            //Indicamos donde lo queremos almacenar
+            Result result = new StreamResult(new java.io.File(ruta)); //nombre del archivo
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.transform(source, result);
+			
+			}//try
+		
+			
+			catch (Exception e) {
+				e.printStackTrace();
 			}
+			
+			
+			
+	}
 		
 		
 		
-	}	 
+		 
 	
 	
 	

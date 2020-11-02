@@ -19,7 +19,7 @@ public class ejercicio {
 		
 		boolean existe=true;
 		existe=ProcesamientoFichero.existeFichero();
-		System.out.println(existe);
+		/*System.out.println(existe);*/
 		
 		switch (x) {
 		  case 1:
