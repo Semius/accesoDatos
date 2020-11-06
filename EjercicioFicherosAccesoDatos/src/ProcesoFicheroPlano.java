@@ -19,75 +19,61 @@ public class ProcesoFicheroPlano extends ProcesamientoFichero  {
 	@Override
 	public ArrayList<Libro> leerFichero(String ruta) {
 		
-		
+		//EL FICHERO TIENE QUE ESTAR CORRECTAMENTE ORDENADO
 		File archivo = new File(ruta);
 		ArrayList<Libro> arrayLibros = new ArrayList<Libro>();
 		try {
 			FileReader fr = new FileReader (archivo);
 	        BufferedReader br = new BufferedReader(fr);
-	        String linea;
-	        
-	        /*Libro l3 = new Libro(linea, linea, linea, linea, linea, null);*/
-	        
-	        /*arrayLibros.add(l3);*/
+	        String linea;	        
 	        
 	        
-	        
-	         while((linea=br.readLine())!=null) {
-	        	 
-	        	 /*System.out.println(linea);*/
-	        	 /*System.out.println(x++);*/
-	        	 
-	        	 
+	         while((linea=br.readLine())!=null) { //el bucle sigue mientras haya lineas que leer
+
 	        	 ArrayList<String> array = new ArrayList<>(Arrays.asList(linea.split(";")));
 	        	 String personajes= array.get(5);
-	        	 ArrayList<String> arrayPersonajes = new ArrayList<>(Arrays.asList(personajes.split("-")));
-	        	 /*System.out.println(arrayPersonajes.get(0));*/
+	        	 ArrayList<String> arrayPersonajesJunto = new ArrayList<>(Arrays.asList(personajes.split("-")));
+	        	 
+	        	 int y=0;
 	        	 ArrayList<Personajes> arrayP1 = new ArrayList<Personajes>();
-	        	 
-	        	 try {
-	        		 int x=0;
-	        		 while(x>-1) {
-	        			 /*System.out.println("a");*/
-	        			 Personajes p1= new Personajes(arrayPersonajes.get(x),null,arrayPersonajes.get(x));
-			        	 
-	        			 
-	        			 /*System.out.println(p1);*/
-			        	 arrayP1.add(p1);
-	        			 x++;
-	        		 }
-		        	
-		        	 
-	        	 }
-	        	 
-	        	 catch (Exception e) {
+	        	 while (y<arrayPersonajesJunto.size()) {
+	        		 //System.out.println(arrayPersonajesJunto.get(0));
+	        		 String personajes2= arrayPersonajesJunto.get(y);
 	        		 
-	        	 }
-	        	 
-	        	 
-	        	 
-	        	 
-	        	 
-	        	 
-	        	 
-	        	 
-	        	 
-	        	 /*System.out.println(arrayP1);*/
-	        	 
-	        	 
-	        	 
-	        	 int contador=arrayPersonajes.size();
-	        	 /*while(contador!=-1) {
-	        		 System.out.println(arrayP1(0));
-	        		 contador--;
-	        	 }*/
+	        		 ArrayList<String> arrayPersonajes = new ArrayList<>(Arrays.asList(personajes2.split(",")));
+ 
+		        	 try {	//el try se acaba en el momento en el que no encuentra más personajes
+		        		 int x=0;
+		        		 
+		        		 int contadorNombre=0;
+	        			 int contadorGenero=1;
+	        			 int contadorImportancia=2;
+		        		 while(x>-1) {
+				        	 Personajes p1 = new Personajes(arrayPersonajes.get(contadorNombre),arrayPersonajes.get(contadorGenero),arrayPersonajes.get(contadorImportancia));
+				        	 System.out.println(arrayPersonajes.get(2));
+		        			 
+		        			 contadorNombre=contadorNombre+3;
+		        			 contadorGenero=contadorGenero+3;
+		        			 contadorImportancia=contadorImportancia+3;
+		        			 System.out.println(p1);
+				        	 arrayP1.add(p1);
+		        			 x++;
+		        		 }
+ 
+		        	 }//try
+		        	 
+		        	 catch (Exception e) { 
+		        	 } 
+	        		 y++;
+	        	 }//while
+
 	             Libro l1 = new Libro(array.get(0), array.get(1), array.get(2), array.get(3), array.get(4), arrayP1);
 	             arrayLibros.add(l1);
 	        	 
 	         }
 	         
 	            
-		}
+		}//try
 		catch(Exception e) {
 	          e.printStackTrace();
 
@@ -95,46 +81,28 @@ public class ProcesoFicheroPlano extends ProcesamientoFichero  {
 		
 
 		return arrayLibros;
-	}
+	}//leerFichero
 
 
-
-	
-	
 	@Override
 	public void guardarFichero(ArrayList<Libro> arrayLibros) {
 		
 		
-		String ruta="C:\\Users\\PC33\\Desktop\\borrar";
 		System.out.println("Fichero guardado");
 		
-		File archivo=new File("texto.txt");
-		
-		
-		
-		
-		
+
 		String textoLibro="";
-		for (Libro s : arrayLibros) {
+		for (Libro s : arrayLibros) { //el bucle se repite por cada elemento del arrayLibros. Une cada elemento en un String
 	         textoLibro= textoLibro + s.getTitulo()+ ";" +s.getEditorial()+";"+ s.getAutor() +";"+s.getFecha()+";"+s.getGenero()+";"+s.getPersonajes();
-	      }
-		
+	      }//for
+		//guarda el archivo
 		try (PrintWriter out = new PrintWriter("C:\\Users\\PC33\\Desktop\\borrar//FicheroGuardado.txt")) {
 		    out.println(textoLibro);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		
-		System.out.println(textoLibro);
-		
-		
-		
-		
-	}
 
+		/*System.out.println(textoLibro);*/
 
-
-
-
+	}//arrayLibros
 }

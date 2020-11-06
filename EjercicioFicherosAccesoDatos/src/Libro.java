@@ -1,6 +1,18 @@
+/**
+ * Una clase para guardar y representar los elementos de Libro
+ * @version 1 6/11/2020
+ * @author Julián
+ */
+
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Libro {
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement (name="Libro")
+public class Libro extends Marshal implements Serializable {
 	
 	
 	private String titulo;
@@ -24,10 +36,10 @@ public class Libro {
 	        this.personajes = arrayProtagonistas;
 	    } //Cierre del constructor
 	
+	public Libro () {
+		
+	}
 	
-	
-	
-	//métodos
 	
 	//get
 	public String getTitulo () { 
@@ -44,30 +56,38 @@ public class Libro {
 	}
 	public String getGenero () { 
 		return genero; }
+	
+	
+	@XmlElementWrapper(name = "listaPersonajes")
 	public ArrayList<Personajes> getPersonajes () { 
 		return personajes; }
 
 	
 	
 	//set
+	@XmlElement
 	public void setTitulo(String titulo) {
 	    this.titulo = titulo;
 	  }
+	@XmlElement
 	public void setEditorial(String editorial) {
 	    this.editorial = editorial;
 	  }
+	@XmlElement
 	public void setAutor(String autor) {
 	    this.autor = autor;
 	  }
+	@XmlElement
 	public void setGenero(String genero) {
 	    this.genero = genero;
 	  }
+	@XmlElement
 	public void setPersonajes(ArrayList<Personajes> personajes) {
 	    this.personajes = personajes;
 	  }
 	
 
-	
+	//toString
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
