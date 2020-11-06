@@ -50,16 +50,14 @@ public class ProcesoFicheroPlano extends ProcesamientoFichero  {
 	        			 int contadorImportancia=2;
 		        		 while(x>-1) {
 				        	 Personajes p1 = new Personajes(arrayPersonajes.get(contadorNombre),arrayPersonajes.get(contadorGenero),arrayPersonajes.get(contadorImportancia));
-				        	 System.out.println(arrayPersonajes.get(2));
 		        			 
 		        			 contadorNombre=contadorNombre+3;
 		        			 contadorGenero=contadorGenero+3;
 		        			 contadorImportancia=contadorImportancia+3;
-		        			 System.out.println(p1);
+
 				        	 arrayP1.add(p1);
 		        			 x++;
 		        		 }
- 
 		        	 }//try
 		        	 
 		        	 catch (Exception e) { 
@@ -68,11 +66,8 @@ public class ProcesoFicheroPlano extends ProcesamientoFichero  {
 	        	 }//while
 
 	             Libro l1 = new Libro(array.get(0), array.get(1), array.get(2), array.get(3), array.get(4), arrayP1);
-	             arrayLibros.add(l1);
-	        	 
+	             arrayLibros.add(l1);        	 
 	         }
-	         
-	            
 		}//try
 		catch(Exception e) {
 	          e.printStackTrace();
@@ -95,6 +90,7 @@ public class ProcesoFicheroPlano extends ProcesamientoFichero  {
 		for (Libro s : arrayLibros) { //el bucle se repite por cada elemento del arrayLibros. Une cada elemento en un String
 	         textoLibro= textoLibro + s.getTitulo()+ ";" +s.getEditorial()+";"+ s.getAutor() +";"+s.getFecha()+";"+s.getGenero()+";"+s.getPersonajes();
 	      }//for
+		
 		//guarda el archivo
 		try (PrintWriter out = new PrintWriter("C:\\Users\\PC33\\Desktop\\borrar//FicheroGuardado.txt")) {
 		    out.println(textoLibro);
@@ -102,7 +98,6 @@ public class ProcesoFicheroPlano extends ProcesamientoFichero  {
 			e.printStackTrace();
 		}
 
-		/*System.out.println(textoLibro);*/
 
 	}//arrayLibros
 }

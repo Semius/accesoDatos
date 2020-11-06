@@ -57,7 +57,4 @@ public class ProcesamientoFicherosObjetos extends ProcesamientoFichero implement
 		}//for
 	}//guardarFichero
 
-	
-	
-	
 }

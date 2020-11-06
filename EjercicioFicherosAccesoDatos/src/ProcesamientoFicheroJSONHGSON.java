@@ -36,11 +36,6 @@ public class ProcesamientoFicheroJSONHGSON extends ProcesamientoFichero {
 	}
 
 	
-	
-	
-
-	
-	
 	@Override
 	public void guardarFichero(ArrayList<Libro> arrayLibros) {
 		

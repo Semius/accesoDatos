@@ -8,9 +8,15 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * 
+ * @author FP
+ *
+ */
 @XmlRootElement (name="Libro")
 public class Libro extends Marshal implements Serializable {
 	
@@ -24,7 +30,14 @@ public class Libro extends Marshal implements Serializable {
 	
 	
 	
-	
+	/**
+	 * @param titulo titulo del libro
+	 * @param editorial editorial del libro
+	 * @param autor autor del libro
+	 * @param fecha	fecha de publicación
+	 * @param genero genero del libro
+	 * @param arrayProtagonistas ArrayList de los personajes del libro, contiene su nombre,genero y importancia
+	 */
 	//constructor
 	public Libro (String titulo, String editorial, String autor, String fecha, String genero, ArrayList<Personajes> arrayProtagonistas) {
 
@@ -95,8 +108,6 @@ public class Libro extends Marshal implements Serializable {
 		+ " Fecha:"+this.getFecha() +  " Genero:"+this.getGenero() + " \nPersonajes: "+this.getPersonajes();
 		
 	}
-	
-	
 	
 	
 }

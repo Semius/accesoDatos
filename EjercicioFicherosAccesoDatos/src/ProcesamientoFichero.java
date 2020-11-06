@@ -3,7 +3,11 @@ import java.io.File;
 public abstract class ProcesamientoFichero implements IProcesamientoFichero {
 	
 	
-	//comprueba si en la ruta que se le envia hay un fichero
+	/**
+	 * Comprueba si un archivo existe y devuelve con booleano, true si existe y false si no existe
+	 * @param ruta del archivo que se quiere comprobar si existe
+	 * @return un boleano true si el archivo existe o false si no existe
+	 */
 	 public static boolean existeFichero(String ruta) {
 		 boolean x = true;
 		 
@@ -23,7 +27,11 @@ public abstract class ProcesamientoFichero implements IProcesamientoFichero {
 	 }
 	 
 	 
-	 //recibe una ruta de un fichero y la intenta borrar
+	 /**
+	  * borra un archivo y devuelve un booleano true si puede o false si no puede borrarlo
+	  * @param ruta del archivo que se quiere borrar
+	  * @return un booleano true si el archivo se puede borrar o false si no se puede
+	  */
 	 public static boolean borrarFichero(String ruta) {
 		 boolean x = true;
 		 

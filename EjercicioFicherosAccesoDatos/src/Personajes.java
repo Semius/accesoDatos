@@ -16,7 +16,13 @@ public class Personajes extends Marshal implements Serializable {
 	private String generoPersonaje;
 	private String importancia;
 	
-	//constructores
+	/**
+	 * Este constructor es necesario para la clase Libro, almacena los personajes del libro
+	 * @param nombre nombre del personaje del libro
+	 * @param generoPersonaje genero al que pertenece el personaje
+	 * @param importancia importancia que tiene el personaje
+	 */
+	
 	public Personajes (String nombre, String generoPersonaje, String importancia) {
 			
 			this.nombre = nombre;
