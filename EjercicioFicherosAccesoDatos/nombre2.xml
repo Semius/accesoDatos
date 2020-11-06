@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Libro>
+    <autor>gfdgd</autor>
+    <editorial>gdf</editorial>
+    <genero>gfdgd</genero>
+    <personajes>
+        <generoPersonaje>gfdgd</generoPersonaje>
+        <importancia>gfdgd</importancia>
+        <nombre>gfdgd</nombre>
+    </personajes>
+    <titulo>HarryPotter</titulo>
+</Libro>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Libro>
+    <autor>gfdgd</autor>
+    <editorial>gdf</editorial>
+    <genero>gfdgd</genero>
+    <personajes>
+        <generoPersonaje>gfdgd</generoPersonaje>
+        <importancia>gfdgd</importancia>
+        <nombre>gfdgd</nombre>
+    </personajes>
+    <titulo>HarryPotter</titulo>
+</Libro>

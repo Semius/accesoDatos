@@ -28,7 +28,6 @@ public class ProcesamientoFicherosSAX extends ProcesamientoFichero {
 
 	@Override
 	public void guardarFichero(ArrayList<Libro> arrayLibros) {
-		// NO
-		
+		// NO		
 	}
 }
