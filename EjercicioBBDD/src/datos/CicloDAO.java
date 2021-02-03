@@ -109,15 +109,15 @@ public class CicloDAO implements ICicloDAO {
 			//meter las asignaturas con la id del ciclo creado
 
 			for(Asignatura asignatura : arrayAsignatura) {
-			String consulta2="INSERT INTO asignatura (nombre, horas, idCiclo) VALUES (?,?,?)";
-			
-			PreparedStatement ps=c.prepareStatement(consulta2);
-			ps.setString(1, asignatura.getNombre());
-			ps.setInt(2, asignatura.getHoras());
-			ps.setInt(3, generatedKey);
-			ps.executeUpdate();
-			System.out.println("asignatura");
-			ps.close();
+				String consulta2="INSERT INTO asignatura (nombre, horas, idCiclo) VALUES (?,?,?)";
+				
+				PreparedStatement ps=c.prepareStatement(consulta2);
+				ps.setString(1, asignatura.getNombre());
+				ps.setInt(2, asignatura.getHoras());
+				ps.setInt(3, generatedKey);
+				ps.executeUpdate();
+				System.out.println("asignatura");
+				ps.close();
 			
 			}//for
 
@@ -128,21 +128,6 @@ public class CicloDAO implements ICicloDAO {
 			e.printStackTrace();
 		}
 		
-		/*String sql = "INSERT INTO ciclo (nombre,grado) "
-		+ "VALUES('dasdasda', 'fdsfsd')";
- 
-		PreparedStatement ps = c.prepareStatement(sql,
-		        Statement.RETURN_GENERATED_KEYS);
-		 
-		ps.execute();
-		 
-		ResultSet rs2 = ps.getGeneratedKeys();
-		int generatedKey2 = 0;
-		if (rs2.next()) {
-		    generatedKey2 = rs2.getInt(1);
-		}
-		 
-		System.out.println("Inserted record's ID: " + generatedKey2);*/
 		
 	}//crear
 	

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 3 feb. 2021 9:55:59 by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="ejerciciohibernate" dynamic-insert="false" dynamic-update="false" mutable="true" name="modelo.entidades.Autorlibro" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="autorlibro">
+        <id name="idAutorLibro" type="int">
+            <column name="IdAutorLibro"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="modelo.entidades.Autor" embed-xml="true" fetch="select" insert="true" name="autor" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="IdAutor" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="modelo.entidades.Libro" embed-xml="true" fetch="select" insert="true" name="libro" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column length="10" name="CodLibro" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
