@@ -9,6 +9,12 @@ import java.util.Set;
  */
 public class Autor implements java.io.Serializable {
 
+	@Override
+	public String toString() {
+		return "Autor [idAutor=" + idAutor + ", nombre=" + nombre + ", apellidos=" + apellidos + ", autorlibros="
+				+ autorlibros + "]";
+	}
+
 	private int idAutor;
 	private String nombre;
 	private String apellidos;

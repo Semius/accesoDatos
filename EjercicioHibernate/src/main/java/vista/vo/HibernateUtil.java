@@ -25,13 +25,14 @@ public class HibernateUtil {
 			
 			return configuration.buildSessionFactory(serviceRegistry);
 	    }
-	  
+	    
+	    
 	    public static SessionFactory getSessionFactory() {
 	        return sessionFactory;
 	    }
 	  
 	    public static void shutdown() {
-	        // Close caches and connection pools
+	        // cerrar cache y conexiones
 	        getSessionFactory().close();
 	    }
 }

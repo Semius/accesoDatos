@@ -3,22 +3,29 @@ package vista.vo;
 import org.hibernate.Session;
 
 import modelo.entidades.Autor;
+import modelo.entidades.Autorlibro;
 
 public class TestHibernate {
 	public static void main(String[] args) {
+		
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         
-        //Add new Employee object
+        //Crear un autor
         Autor autor = new Autor();
-        autor.setIdAutor(2);
-        autor.setApellidos("aaa");
-        autor.setNombre("aaa");
+        
+        autor.setApellidos("apellidos");
+        //autor.setAutorlibros(null);
+        autor.setIdAutor(6);
+        autor.setNombre("a");
+        
+        
+        System.out.println("FUNCIONA");
         /*emp.setFirstName(&quot;demo&quot;);
         emp.setLastName(&quot;user&quot;);*/
-         
+        
         session.save(autor);
-         
+        
         session.getTransaction().commit();
         HibernateUtil.shutdown();
     }
